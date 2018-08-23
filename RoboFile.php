@@ -2,6 +2,10 @@
 
 class RoboFile extends \Robo\Tasks
 {
+	public function npmInstall(){
+		$this->taskNpmInstall()->run();
+	}
+
 	public function execute($name)
 	{
 		$filename = 'page.json';
