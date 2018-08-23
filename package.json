@@ -1,0 +1,14 @@
+{
+  "name": "hetzner-webhint",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "hint": "^3.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/MkaaaaaaaY/hetzner-webhint.git"
+  },
+  "author": "Jonathan Martz",
+  "homepage": "https://bitbucket.org/MkaaaaaaaY/hetzner-webhint#readme"
+}
