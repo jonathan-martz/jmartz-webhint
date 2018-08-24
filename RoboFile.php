@@ -21,7 +21,7 @@ class RoboFile extends \Robo\Tasks
 			foreach($pages as $page){
 				if($page['name'] == $name){
 					foreach($page['urls'] as $url){
-						$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> hint-report.json');
+						$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$folder.'hint-'.$url['url'].'.json');
 					}
 				}
 			}
