@@ -1,6 +1,5 @@
 {
     "extends": ["web-recommended"],
-    "formatters": "json",
     "hints": {
             "axe": "off"
         }
