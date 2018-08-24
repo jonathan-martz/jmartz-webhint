@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Npm install') {
             steps {
-                sh 'robo execute npm-install'
+                sh 'robo npm-install'
             }
         }
         stage('jmartz.de') {
