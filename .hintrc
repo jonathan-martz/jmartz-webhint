@@ -1,3 +1,6 @@
 {
-    "extends": ["web-recommended"]
+    "extends": ["web-recommended"],
+    "hints": {
+            "axe": "off"
+        }
 }
