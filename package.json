@@ -1,16 +1,30 @@
 {
-  "name": "hetzner-webhint",
-  "version": "1.0.0",
-  "description": "",
-  "dependencies": {
-    "hint": "^3.2.3",
-    "@hint/configuration-web-recommended": "^1.1.0",
-    "@hint/hint-no-vulnerable-javascript-libraries": "^1.2.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org/MkaaaaaaaY/hetzner-webhint.git"
-  },
-  "author": "Jonathan Martz",
-  "homepage": "https://bitbucket.org/MkaaaaaaaY/hetzner-webhint#readme"
+    "name": "hetzner-webhint",
+    "version": "1.0.0",
+    "description": "",
+    "dependencies": {
+        "hint": "^3.2.3",
+        "@hint/configuration-web-recommended": "^1.1.0",
+        "@hint/hint-no-vulnerable-javascript-libraries": "^1.2.0",
+        "@hint/hint-performance-budget": "^1.0.1",
+        "@hint/hint-ssllabs": "^1.0.1",
+        "@hint/hint-minified-js": "^1.0.1",
+        "@hint/hint-https-only": "^1.0.1",
+        "@hint/hint-strict-transport-security": "^1.0.2",
+        "@hint/hint-no-http-redirects": "^1.0.2",
+        "@hint/hint-meta-viewport": "^1.0.1",
+        "@hint/hint-meta-charset-utf-8": "^1.0.1",
+        "@hint/hint-manifest-exists": "^1.0.1",
+        "@hint/hint-no-broken-links": "^1.0.3",
+        "@hint/formatter-json": "^1.0.0",
+        "@hint/parser-javascript": "^1.0.0",
+        "@hint/hint-meta-theme-color": "^1.0.1",
+        "@hint/parser-css": "^1.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@bitbucket.org/MkaaaaaaaY/hetzner-webhint.git"
+    },
+    "author": "Jonathan Martz",
+    "homepage": "https://bitbucket.org/MkaaaaaaaY/hetzner-webhint#readme"
 }
