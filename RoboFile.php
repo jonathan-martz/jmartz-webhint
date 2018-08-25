@@ -27,7 +27,7 @@ class RoboFile extends \Robo\Tasks
 			foreach($pages as $page){
 				if($page['name'] == $name){
 					foreach($page['urls'] as $url){
-						$filename = str_replace(['https://', 'http://','/'],['','','-'],$folder.'hint-'.$url['url'].'.json');
+						$filename = $folder.'hint-'.str_replace(['https://', 'http://','/'],['','','-'],$url['url'].'.json');
 
 						$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$filename);
 					}
