@@ -13,15 +13,23 @@ class RoboFile extends \Robo\Tasks
 
 		$folder = 'reports/'.date('d-m-y-H').'/';
 
-		$this->_exec('mkdir reports');
-		$this->_exec('mkdir '.$folder);
+		if(!file_exists('reports')){
+			$this->_exec('mkdir reports');
+		}
+
+		if(!file_exists('mkdir '.$folder)){
+			$this->_exec('mkdir '.$folder);
+		}
+
 
 		if(strlen($file) > 0){
 			$pages = json_decode($file, JSON_FORCE_OBJECT);
 			foreach($pages as $page){
 				if($page['name'] == $name){
 					foreach($page['urls'] as $url){
-						$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$folder.'hint-'.$url['url'].'.json');
+						$filename = str_replace(['https://', 'http://','/'],['','','-'],$folder.'hint-'.$url['url'].'.json');
+
+						$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$filename);
 					}
 				}
 			}
