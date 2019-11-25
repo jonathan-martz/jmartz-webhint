@@ -1,7 +1,7 @@
 {
     "name": "hetzner-webhint",
     "version": "1.0.0",
-    "description": "",
+    "description": "jmartz webhint generator",
     "dependencies": {
         "hint": "^3.2.3",
         "@hint/configuration-web-recommended": "^1.1.0",
@@ -19,7 +19,8 @@
         "@hint/formatter-json": "^1.0.0",
         "@hint/parser-javascript": "^1.0.0",
         "@hint/hint-meta-theme-color": "^1.0.1",
-        "@hint/parser-css": "^1.0.0"
+        "@hint/parser-css": "^1.0.0",
+        "@hint/parser-manifest": "^1.1.1"
     },
     "repository": {
         "type": "git",
