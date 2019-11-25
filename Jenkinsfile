@@ -8,12 +8,12 @@ pipeline {
                 sh 'robo npm:install'
             }
         }
-        stage('jmartz.de') {
+        stage('Webhint') {
             steps {
                 sh 'robo execute jmartz.de'
             }
         }
-        stage('copy reports') {
+        stage('Copy reports') {
             steps {
                 sh 'robo copy'
             }

@@ -6,9 +6,23 @@ class RoboFile extends \Robo\Tasks
 		$this->taskNpmInstall()->run();
 	}
 
-	public function execute($name)
+	public function loadConfig(){
+        $ip = '195.201.38.163';
+        $user = 'root';
+
+        $this->taskRsync()
+            ->toPath('.')
+            ->fromHost($ip)
+            ->fromUser($user)
+            ->fromPath('/var/www/performance.jmartz.de/shared/config')
+            ->recursive()
+            ->progress()
+            ->run();
+    }
+
+	public function execute()
 	{
-		$filename = 'page.json';
+		$filename = 'config/webhint.json';
 		$file = file_get_contents($filename);
 
 		$folder = 'reports/'.date('d-m-y-H').'/';
@@ -21,26 +35,26 @@ class RoboFile extends \Robo\Tasks
 			$this->_exec('mkdir '.$folder);
 		}
 
-
 		if(strlen($file) > 0){
 			$pages = json_decode($file, JSON_FORCE_OBJECT);
 			foreach($pages as $page){
-				if($page['name'] == $name){
-					foreach($page['urls'] as $url){
-						$filename = $folder.'hint-'.str_replace(['https://', 'http://','/'],['','','-'],$url['url'].'.json');
+				foreach($page['urls'] as $url){
+					$filename = $folder.'hint-'.str_replace(['https://', 'http://','/'],['','','-'],$url['url'].'.json');
 
-						$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$filename);
-					}
+					$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$filename);
 				}
 			}
 		}
 	}
 
 	public function copy(){
+		$ip = '195.201.38.163';
+		$user = 'root';
+
 		$this->taskRsync()
 			 ->fromPath('reports')
-			 ->toHost('195.201.38.163')
-			 ->toUser('root')
+			 ->toHost($ip)
+			 ->toUser($user)
 			 ->toPath('/var/www/performance.jmartz.de/shared')
 			 ->recursive()
 			 ->progress()
