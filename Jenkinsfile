@@ -3,6 +3,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Load config') {
+            steps {
+                sh 'robo load:config'
+            }
+        }
+
         stage('Npm install') {
             steps {
                 sh 'robo npm:install'
