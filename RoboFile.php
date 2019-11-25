@@ -14,7 +14,7 @@ class RoboFile extends \Robo\Tasks
             ->toPath('.')
             ->fromHost($ip)
             ->fromUser($user)
-            ->toPath('/var/www/performance.jmartz.de/config')
+            ->fromPath('/var/www/performance.jmartz.de/shared/config')
             ->recursive()
             ->progress()
             ->run();
@@ -22,7 +22,7 @@ class RoboFile extends \Robo\Tasks
 
 	public function execute($name)
 	{
-		$filename = 'page.json';
+		$filename = 'config/webhint.json';
 		$file = file_get_contents($filename);
 
 		$folder = 'reports/'.date('d-m-y-H').'/';
