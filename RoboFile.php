@@ -37,10 +37,13 @@ class RoboFile extends \Robo\Tasks
 	}
 
 	public function copy(){
+		$ip = '195.201.38.163';
+		$user = 'root';
+
 		$this->taskRsync()
 			 ->fromPath('reports')
-			 ->toHost('195.201.38.163')
-			 ->toUser('root')
+			 ->toHost($ip)
+			 ->toUser($user)
 			 ->toPath('/var/www/performance.jmartz.de/shared')
 			 ->recursive()
 			 ->progress()
