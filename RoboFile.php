@@ -31,7 +31,7 @@ class RoboFile extends \Robo\Tasks
 			$this->_exec('mkdir reports');
 		}
 
-		if(!file_exists('mkdir '.$folder)){
+		if(!file_exists($folder)){
 			$this->_exec('mkdir '.$folder);
 		}
 
