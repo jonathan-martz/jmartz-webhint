@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Webhint') {
             steps {
-                sh 'robo execute jmartz.de'
+                sh 'robo execute'
             }
         }
         stage('Copy reports') {
