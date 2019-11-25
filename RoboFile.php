@@ -20,7 +20,7 @@ class RoboFile extends \Robo\Tasks
             ->run();
     }
 
-	public function execute($name)
+	public function execute()
 	{
 		$filename = 'config/webhint.json';
 		$file = file_get_contents($filename);
@@ -38,12 +38,10 @@ class RoboFile extends \Robo\Tasks
 		if(strlen($file) > 0){
 			$pages = json_decode($file, JSON_FORCE_OBJECT);
 			foreach($pages as $page){
-				if($page['name'] == $name){
-					foreach($page['urls'] as $url){
-						$filename = $folder.'hint-'.str_replace(['https://', 'http://','/'],['','','-'],$url['url'].'.json');
+				foreach($page['urls'] as $url){
+					$filename = $folder.'hint-'.str_replace(['https://', 'http://','/'],['','','-'],$url['url'].'.json');
 
-						$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$filename);
-					}
+					$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$filename);
 				}
 			}
 		}
