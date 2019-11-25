@@ -6,6 +6,20 @@ class RoboFile extends \Robo\Tasks
 		$this->taskNpmInstall()->run();
 	}
 
+	public function loadConfig(){
+        $ip = '195.201.38.163';
+        $user = 'root';
+
+        $this->taskRsync()
+            ->toPath('.')
+            ->fromHost($ip)
+            ->fromUser($user)
+            ->toPath('/var/www/performance.jmartz.de/config')
+            ->recursive()
+            ->progress()
+            ->run();
+    }
+
 	public function execute($name)
 	{
 		$filename = 'page.json';
@@ -20,7 +34,6 @@ class RoboFile extends \Robo\Tasks
 		if(!file_exists('mkdir '.$folder)){
 			$this->_exec('mkdir '.$folder);
 		}
-
 
 		if(strlen($file) > 0){
 			$pages = json_decode($file, JSON_FORCE_OBJECT);
