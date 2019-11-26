@@ -70,11 +70,12 @@ class RoboFile extends Tasks
 	 */
 	public function downloadConfig(): void
 	{
+		// Todo: replace plain string with config
 		$this->taskRsync()
 			->toPath('.')
-			->fromHost($this->config['server']['ip'])
-			->fromUser($this->config['server']['user'])
-			->fromPath($this->config['server']['folder'] . self::config)
+			->fromHost('195.201.38.163')
+			->fromUser('root')
+			->fromPath('/var/www/performance.jmartz.de/shared/' . self::config)
 			->recursive()
 			->progress()
 			->run();
