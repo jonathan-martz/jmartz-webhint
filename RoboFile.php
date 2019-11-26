@@ -43,8 +43,6 @@ class RoboFile extends Tasks
 	public function __construct()
 	{
 		$this->date = date('d-m-y-H-i');
-		$this->config['webhint'] = $this->loadWebhintConfig();
-		$this->config['server'] = $this->loadServerConfig();
 	}
 
 	/**
@@ -92,22 +90,10 @@ class RoboFile extends Tasks
 	/**
 	 * @return void
 	 */
-	public function loadConfig():void{
-        $this->taskRsync()
-            ->toPath('.')
-            ->fromHost($this->config['server']['ip'])
-            ->fromUser($this->config['server']['user'])
-            ->fromPath($this->config['server']['folder'].self::config)
-            ->recursive()
-            ->progress()
-            ->run();
-    }
-
-	/**
-	 * @return void
-	 */
 	public function execute():void
 	{
+		$this->config['webhint'] = $this->loadWebhintConfig();
+
 		$folder = self::reports.'/'.$this->date.'/';
 
 		if(!file_exists(self::reports)){
@@ -132,6 +118,8 @@ class RoboFile extends Tasks
 	 * @return void
 	 */
 	public function copy():void{
+		$this->config['server'] = $this->loadServerConfig();
+
 		$this->taskRsync()
 			 ->fromPath('reports')
 			 ->toHost($this->config['server']['ip'])
