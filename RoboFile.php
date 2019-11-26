@@ -84,7 +84,9 @@ class RoboFile extends Tasks
 	 * @return void
 	 */
 	public function npmInstall():void{
+		$this->stopOnFail(false);
 		$this->taskNpmInstall()->run();
+		$this->stopOnFail(true);
 	}
 
 	/**
