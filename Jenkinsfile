@@ -9,9 +9,10 @@ pipeline {
             }
         }
 
-        stage('Npm install') {
+        stage('Install dependencies') {
             steps {
                 sh 'robo npm:install'
+                sh 'robo composer:install'
             }
         }
         stage('Webhint') {
