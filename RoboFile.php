@@ -108,14 +108,12 @@ class RoboFile extends Tasks
 		}
 
 		if(count($this->config['webhint']) > 0){
-			$exec = $this->taskParallelExec();
 			foreach($this->config['webhint'] as $page){
 				foreach($page['urls'] as $url){
 					$filename = $folder.'hint-'.str_replace(['https://', 'http://','/'],['','','-'],$url['url'].'.json');
-					$exec->process('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$filename);
+					$this->_exec('./node_modules/hint/dist/src/bin/hint.js '.$url['url'].' -f json >> '.$filename);
 				}
 			}
-			$exec->run();
 		}
 	}
 
